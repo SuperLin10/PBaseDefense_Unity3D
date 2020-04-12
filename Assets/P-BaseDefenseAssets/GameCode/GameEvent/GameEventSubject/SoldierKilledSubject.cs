@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Soldier單位陣亡
+// Soldier单位阵亡
 public class SoldierKilledSubject : IGameEventSubject
 {
 	private	int	m_KilledCount = 0;
@@ -16,13 +16,13 @@ public class SoldierKilledSubject : IGameEventSubject
 		return m_Soldier;
 	}
 
-	// 目前我方單位陣亡數
+	// 目前我方单位阵亡数
 	public int GetKilledCount()
 	{
 		return m_KilledCount;
 	}
 
-	// 通知我方單位陣亡
+	// 通知我方单位阵亡
 	public override void SetParam( System.Object Param )
 	{
 		base.SetParam( Param);

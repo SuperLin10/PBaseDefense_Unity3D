@@ -1,98 +1,97 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace DesignPattern_Observer
 {
-	// 觀察者介面
-	public abstract class Observer
-	{
-		public abstract void Update();
-	}
+    // 观察者界面
+    public abstract class Observer
+    {
+        public abstract void Update();
+    }
 
-	// 主題介面
-	public abstract class Subject
-	{
-		List<Observer> m_Observers = new List<Observer>();
+    // 主题界面
+    public abstract class Subject
+    {
+        List<Observer> m_Observers = new List<Observer>();
 
-		// 加入觀察者
-		public void Attach(Observer theObserver)
-		{
-			m_Observers.Add( theObserver );
-		}
+        // 加入观察者
+        public void Attach(Observer theObserver)
+        {
+            m_Observers.Add(theObserver);
+        }
 
-		// 移除觀察者
-		public void Detach(Observer theObserver)
-		{
-			m_Observers.Remove( theObserver );
-		}
+        // 移除观察者
+        public void Detach(Observer theObserver)
+        {
+            m_Observers.Remove(theObserver);
+        }
 
-		// 通知所有觀察者
-		public void Notify()
-		{
-			foreach( Observer theObserver  in m_Observers)
-				theObserver.Update();
-		}
-	}
+        // 通知所有观察者
+        public void Notify()
+        {
+            foreach (Observer theObserver in m_Observers)
+                theObserver.Update();
+        }
+    }
 
-	// 主題實作 
-	public class ConcreteSubject : Subject
-	{
-		string m_SubjectState;
-		public void SetState(string State)
-		{
-			m_SubjectState = State;
-			Notify();
-		}
+    // 主题实作 
+    public class ConcreteSubject : Subject
+    {
+        string m_SubjectState;
+        public void SetState(string State)
+        {
+            m_SubjectState = State;
+            Notify();
+        }
 
-		public string GetState()
-		{
-			return m_SubjectState;
-		}
-	}
+        public string GetState()
+        {
+            return m_SubjectState;
+        }
+    }
 
-	// 實作的Observer1
-	public class ConcreteObserver1 : Observer
-	{
-		string m_ObjectState;
+    // 实作的Observer1
+    public class ConcreteObserver1 : Observer
+    {
+        string m_ObjectState;
 
-		ConcreteSubject m_Subject = null;
+        ConcreteSubject m_Subject = null;
 
-		public ConcreteObserver1( ConcreteSubject theSubject)
-		{
-			m_Subject = theSubject;
-		}
+        public ConcreteObserver1(ConcreteSubject theSubject)
+        {
+            m_Subject = theSubject;
+        }
 
-		// 通知Subject更新
-		public override void Update ()
-		{
-			Debug.Log ("ConcreteObserver1.Update");
-			// 取得Subject狀態
-			m_ObjectState = m_Subject.GetState();
-		}
+        // 通知Subject更新
+        public override void Update()
+        {
+            Debug.Log("ConcreteObserver1.Update");
+            // 取得Subject状态
+            m_ObjectState = m_Subject.GetState();
+        }
 
-		public void ShowState()
-		{
-			Debug.Log ("ConcreteObserver1:Subject目前的主題:"+m_ObjectState);
-		}
-	}
+        public void ShowState()
+        {
+            Debug.Log("ConcreteObserver1:Subject目前的主题:" + m_ObjectState);
+        }
+    }
 
-	// 實作的Observer2
-	public class ConcreteObserver2 : Observer
-	{			
-		ConcreteSubject m_Subject = null;
-	
-		public ConcreteObserver2( ConcreteSubject theSubject)
-		{
-			m_Subject = theSubject;
-		}
-		
-		// 通知Subject更新
-		public override void Update ()
-		{
-			Debug.Log ("ConcreteObserver2.Update");
-			// 取得Subject狀態
-			Debug.Log ("ConcreteObserver2:Subject目前的主題:"+m_Subject.GetState());
-		}		
-	}
-	
+    // 实作的Observer2
+    public class ConcreteObserver2 : Observer
+    {
+        ConcreteSubject m_Subject = null;
+
+        public ConcreteObserver2(ConcreteSubject theSubject)
+        {
+            m_Subject = theSubject;
+        }
+
+        // 通知Subject更新
+        public override void Update()
+        {
+            Debug.Log("ConcreteObserver2.Update");
+            // 取得Subject状态
+            Debug.Log("ConcreteObserver2:Subject目前的主题:" + m_Subject.GetState());
+        }
+    }
 }

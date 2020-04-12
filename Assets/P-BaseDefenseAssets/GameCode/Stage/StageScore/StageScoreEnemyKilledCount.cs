@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 關卡分數確認:敵人陣亡數
+// 关卡分数确认:敌人阵亡数
 public class StageScoreEnemyKilledCount :  IStageScore
 {
 	private int m_EnemyKilledCount = 0;
@@ -13,7 +13,7 @@ public class StageScoreEnemyKilledCount :  IStageScore
 		m_StageSystem = theStageSystem;
 	}
 
-	// 確認關卡分數是否達成
+	// 确认关卡分数是否達成
 	public override bool CheckScore()
 	{
 		return ( m_StageSystem.GetEnemyKilledCount() >=  m_EnemyKilledCount);

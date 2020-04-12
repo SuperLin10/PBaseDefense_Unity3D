@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 產生遊戲角色工廠界面(Generic Method)
+// 产生游戏角色工厂界面(Generic Method)
 public interface TCharacterFactory_Generic
 {
 	ISoldier CreateSoldier<T>(ENUM_Weapon emWeapon, int Lv, Vector3 SpawnPosition) where T: ISoldier,new();

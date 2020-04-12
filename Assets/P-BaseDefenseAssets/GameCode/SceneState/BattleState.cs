@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-// 戰鬥狀態
+// 战鬥状态
 public class BattleState : ISceneState
 {
 	public BattleState(SceneStateController Controller):base(Controller)
@@ -10,7 +10,7 @@ public class BattleState : ISceneState
 		this.StateName = "BattleState";
 	}
 
-	// 開始
+	// 开始
 	public override void StateBegin()
 	{
 		PBaseDefenseGame.Instance.Initinal();
@@ -25,11 +25,11 @@ public class BattleState : ISceneState
 	// 更新
 	public override void StateUpdate()
 	{	
-		// 遊戲邏輯
+		// 游戏邏輯
 		PBaseDefenseGame.Instance.Update();
-		// Render由Unity負責
+		// Render由Unity负责
 
-		// 遊戲是否結束
+		// 游戏是否結束
 		if( PBaseDefenseGame.Instance.ThisGameIsOver())
 			m_Controller.SetState(new MainMenuState(m_Controller), "MainMenuScene" );
 	}

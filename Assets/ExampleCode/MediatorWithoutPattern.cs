@@ -1,133 +1,125 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace MediatorWithoutPattern
+﻿namespace MediatorWithoutPattern
 {
-	public class ISoldier
-	{
-	}
+    public class ISoldier
+    {
+    }
 
-	// 兵營界面
-	public class CampInfoUI
-	{
-		CampSystem m_CampSystem; // 兵營系統
+    // 兵营界面
+    public class CampInfoUI
+    {
+        CampSystem m_CampSystem; // 兵营系统
 
-		public void TrainSoldier(int SoldierID)
-		{
-			m_CampSystem.TrainSoldier(SoldierID);
-		}
-	}
+        public void TrainSoldier(int SoldierID)
+        {
+            m_CampSystem.TrainSoldier(SoldierID);
+        }
+    }
 
-	// 兵營系統
-	public class CampSystem
-	{
-		APSystem m_ApSystem; // 行動力系統
-		CharacterSystem m_CharacterSystem;// 角色管理系統
+    // 兵营系统
+    public class CampSystem
+    {
+        APSystem m_ApSystem; // 行动力系统
+        CharacterSystem m_CharacterSystem;// 角色管理系统
 
-		// 訓練戰士
-		public void TrainSoldier(int SoldierID)
-		{
-			//向行動力系統(APSystem)詢問是否有足夠的行動力可以生產，
-			if( m_ApSystem.CheckTrainSoldier( SoldierID )==false)
-				return ;
+        // 训练战士
+        public void TrainSoldier(int SoldierID)
+        {
+            //向行动力系统(APSystem)询问是否有足够的行动力可以生产，
+            if (m_ApSystem.CheckTrainSoldier(SoldierID) == false)
+                return;
 
-			// 行動力系統(APSystem)回覆有足夠的行動力之後，兵營系統(CampSystem)便執行產生戰士功能
-			ISoldier NewSoldier = CreateSoldier(SoldierID);
-			if( NewSoldier == null)
-				return ;
+            // 行动力系统(APSystem)回覆有足够的行动力之后，兵营系统(CampSystem)便执行产生战士功能
+            ISoldier NewSoldier = CreateSoldier(SoldierID);
+            if (NewSoldier == null)
+                return;
 
-			// 再通知行動力系統(APSystem)扣除行動力，
-			m_ApSystem.DescAP( 10 );
-						 
-			// 最後將產生的戰士交由角色管理系統(CharacterSystem)管理：
-			m_CharacterSystem.AddSoldier( NewSoldier );
-		}
+            // 再通知行动力系统(APSystem)扣除行动力，
+            m_ApSystem.DescAP(10);
 
-		// 執行
-		private ISoldier CreateSoldier(int SoldierID)
-		{
-			return null;
-		}
+            // 最后将产生的战士交由角色管理系统(CharacterSystem)管理：
+            m_CharacterSystem.AddSoldier(NewSoldier);
+        }
 
-	}
+        // 执行
+        private ISoldier CreateSoldier(int SoldierID)
+        {
+            return null;
+        }
 
-	// 行動力系統
-	public class APSystem
-	{
-		GameStateInfoUI m_StateInfoUI; // 遊戲狀態界面
-		int m_AP;
+    }
 
-		// 是否可以訓練戰士
-		public bool CheckTrainSoldier(int SoldierID)
-		{
-			return true;
-		}
+    // 行动力系统
+    public class APSystem
+    {
+        GameStateInfoUI m_StateInfoUI; // 游戏状态界面
+        int m_AP;
 
-		// 扣除AP
-		public void DescAP(int Value)
-		{
-			m_AP -= Value;
-			m_StateInfoUI.UpdateUI();
-		}
+        // 是否可以训练战士
+        public bool CheckTrainSoldier(int SoldierID)
+        {
+            return true;
+        }
 
-		// 取得AP
-		public int GetAP()
-		{
-			return m_AP;
-		}
+        // 扣除AP
+        public void DescAP(int Value)
+        {
+            m_AP -= Value;
+            m_StateInfoUI.UpdateUI();
+        }
 
-	}
+        // 取得AP
+        public int GetAP()
+        {
+            return m_AP;
+        }
 
-	// 遊戲狀態界面
-	public class GameStateInfoUI
-	{
-		APSystem m_ApSystem;	// 行動力系統
+    }
 
-		// 更新界面
-		public void UpdateUI()
-		{
-			int NowAP = m_ApSystem.GetAP();
-		}
-	}
+    // 游戏状态界面
+    public class GameStateInfoUI
+    {
+        APSystem m_ApSystem;    // 行动力系统
 
-	// 角色管理系統
-	public class CharacterSystem
-	{
-		// 加入戰士
-		public void AddSoldier(ISoldier NewSoldier)
-		{
+        // 更新界面
+        public void UpdateUI()
+        {
+            int NowAP = m_ApSystem.GetAP();
+        }
+    }
 
-		}
-	}
+    // 角色管理系统
+    public class CharacterSystem
+    {
+        // 加入战士
+        public void AddSoldier(ISoldier NewSoldier)
+        {
 
-public class TestClass
-{
-	/*CampInfoUI m_CampInfoUI;
-	CampSystem m_CampSystem;
-	APSystem m_ApSystem;
-	GameStateInfoUI m_StateInfoUI;
-	CharacterSystem m_CharacterSystem;
+        }
+    }
 
-	// 設定缺
-	public void SetCampInfo( CampSystem m_CampSystem ) 
-	{
-		m_CampSystem = pCampSystem;
-	}*/
+    public class TestClass
+    {
+        /*CampInfoUI m_CampInfoUI;
+        CampSystem m_CampSystem;
+        APSystem m_ApSystem;
+        GameStateInfoUI m_StateInfoUI;
+        CharacterSystem m_CharacterSystem;
 
-	public void CreateSoldier()
-	{
-		/*兵營界面(CampInfoUI)在接收到玩家指令之後，
-		向兵營系統(CampSystem)通知要練訓一員戰士出場，
-		兵營系統(CampSystem)接收到通知之後，
-		向行動力系統(APSystem)詢問是否有足夠的行動力可以生產，行動力系統(APSystem)回覆有足夠的行動力之後，兵營系統(CampSystem)便執行產生戰士功能，再通知行動力系統(APSystem)扣除行動力，並通知遊戲狀態界面(GameStateInfoUI)顯示目前的行動力，最後將產生的戰士交由角色管理系統(CharacterSystem)管理：
-*/
+        // 设定缺
+        public void SetCampInfo( CampSystem m_CampSystem ) 
+        {
+            m_CampSystem = pCampSystem;
+        }*/
 
+        public void CreateSoldier()
+        {
+            /*兵营界面(CampInfoUI)在接收到玩家指令之后，
+            向兵营系统(CampSystem)通知要训练一員战士出场，
+            兵营系统(CampSystem)接收到通知之后，
+            向行动力系统(APSystem)询问是否有足够的行动力可以生产，行动力系统(APSystem)回覆有足够的行动力之后，兵营系统(CampSystem)便执行产生战士功能，再通知行动力系统(APSystem)扣除行动力，并通知游戏状态界面(GameStateInfoUI)显示目前的行动力，最后将产生的战士交由角色管理系统(CharacterSystem)管理：
+            */
 
-	}
-
-
-}
-
-
+        }
+    }
 }
 

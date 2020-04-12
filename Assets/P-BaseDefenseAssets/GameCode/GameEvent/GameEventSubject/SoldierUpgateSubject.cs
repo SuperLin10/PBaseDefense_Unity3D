@@ -10,13 +10,13 @@ public class SoldierUpgateSubject : IGameEventSubject
 	public SoldierUpgateSubject()
 	{}
 
-	// 目前升級次數
+	// 目前升級次数
 	public int GetUpgateCount()
 	{
 		return m_UpgateCount;
 	}
 
-	// 通知Soldier單位升級
+	// 通知Soldier单位升級
 	public override void SetParam( System.Object Param )
 	{
 		base.SetParam( Param);

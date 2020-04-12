@@ -10,22 +10,22 @@ public enum ENUM_Weapon
 	Max	,
 }
 
-// 武器介面
+// 武器界面
 public abstract class IWeapon
 {
 	protected ENUM_Weapon m_emWeaponType = ENUM_Weapon.Null;
 
-	// 數值
-	protected int		   m_AtkPlusValue = 0;		  	// 額外增加的攻擊力
-	//protected int 	   m_Atk = 0; 					// 攻擊力
-	//protected float 	   m_Range= 0.0f;				// 攻擊距離
+	// 数值
+	protected int		   m_AtkPlusValue = 0;		  	// 额外增加的攻击力
+	//protected int 	   m_Atk = 0; 					// 攻击力
+	//protected float 	   m_Range= 0.0f;				// 攻击距离
 	protected WeaponAttr m_WeaponAttr = null;		  	// 武器的能力
 
 	// 
-	protected GameObject  m_GameObject = null;			// 顯示的Uniyt模型
-	protected ICharacter  m_WeaponOwner = null;			// 武器的擁有者
+	protected GameObject  m_GameObject = null;			// 显示的Uniyt模型
+	protected ICharacter  m_WeaponOwner = null;			// 武器的拥有者
 
-	// 發射特效
+	// 发射特效
 	protected float			 m_EffectDisplayTime = 0;
 	protected ParticleSystem m_Particles;                    
 	protected LineRenderer   m_Line;                           
@@ -39,52 +39,52 @@ public abstract class IWeapon
 		return  m_emWeaponType;
 	}
 
-	// 設定顯示的Unity模型
+	// 设定显示的Unity模型
 	public void SetGameObject( GameObject theGameObject )
 	{
 		m_GameObject = theGameObject ;
 
-		// 設定特效元件
+		// 设定特效元件
 		SetupEffect();
 	}
 
-	// 取得顯示的Unity模型
+	// 取得显示的Unity模型
 	public GameObject GetGameObject()
 	{
 		return m_GameObject;
 	}
 
-	// 設定武器擁有者
+	// 设定武器拥有者
 	public void SetOwner( ICharacter Owner )
 	{
 		m_WeaponOwner = Owner;
 	}
 
-	// 設定攻擊能力
+	// 设定攻击能力
 	public void SetWeaponAttr(WeaponAttr theWeaponAttr)
 	{
         m_WeaponAttr = theWeaponAttr;
 	}
 
-	// 設定額外功擊力
+	// 设定额外功击力
 	public void SetAtkPlusValue(int Value)
 	{
 		m_AtkPlusValue = Value;
 	}
 
-	// 取得攻擊力
+	// 取得攻击力
 	public int GetAtkValue()
 	{
 		return m_WeaponAttr.Atk + m_AtkPlusValue;
 	}
 
-	// 取得攻擊距離
+	// 取得攻击距离
 	public float GetAtkRange()
 	{
 		return m_WeaponAttr.AtkRange;
 	}
 
-	// 釋放
+	// 释放
 	public void Release()
 	{
 		if( m_GameObject != null)
@@ -102,7 +102,7 @@ public abstract class IWeapon
 		}
 	}
 
-	// 設定特效元件
+	// 设定特效元件
 	protected void SetupEffect()
 	{
 		GameObject EffectObj = UnityTool.FindChildGameObject( m_GameObject ,"Effect");
@@ -122,7 +122,7 @@ public abstract class IWeapon
 			m_Light.enabled = false;
 	}
 
-	// 顯示子彈特效
+	// 显示子彈特效
 	protected void ShowBulletEffect(Vector3 TargetPosition, float LineWidth,float DisplayTime)
 	{
 		if( m_Line ==null)
@@ -134,7 +134,7 @@ public abstract class IWeapon
 		m_EffectDisplayTime = DisplayTime;
 	}
 
-	// 顯示槍口特效 
+	// 显示槍口特效 
 	protected void ShowShootEffect()
 	{
 		if( m_Particles != null)
@@ -147,7 +147,7 @@ public abstract class IWeapon
 			m_Line.enabled = true;
 	}
 
-	// 顯示音效
+	// 显示音效
 	protected void ShowSoundEffect(string ClipName)
 	{
 		if(m_Audio==null)
@@ -162,26 +162,26 @@ public abstract class IWeapon
 		m_Audio.Play();
 	}
 
-	// 攻擊目標
+	// 攻击目标
 	public void Fire( ICharacter theTarget )
 	{
-		// 顯示武器發射/槍口特效
+		// 显示武器发射/槍口特效
 		ShowShootEffect();
 
-		// 顯示武器子彈特效(子類別實作)
+		// 显示武器子彈特效(子类別实作)
 		DoShowBulletEffect( theTarget );
 
-		// 顯示音效(子類別實作)
+		// 显示音效(子类別实作)
 		DoShowSoundEffect();
 		
-		// 直接命中攻擊
+		// 直接命中攻击
 		theTarget.UnderAttack( m_WeaponOwner );
 	}
 	
-	// 顯示武器子彈特效
+	// 显示武器子彈特效
 	protected abstract void DoShowBulletEffect( ICharacter theTarget );
 
-	// 顯示音效
+	// 显示音效
 	protected abstract void DoShowSoundEffect();
 
 }

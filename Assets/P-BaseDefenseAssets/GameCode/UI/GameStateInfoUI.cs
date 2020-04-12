@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-// 遊戲狀態資訊
+// 游戏状态信息
 public class GameStateInfoUI : IUserInterface
 {
 	private Text m_MsgText = null;
@@ -18,7 +18,7 @@ public class GameStateInfoUI : IUserInterface
 	private const float MESSAGE_TIMER = 2f;
 	private float m_MsgTimer = 0;
 
-	private UnitCountVisitor m_UnitCountVisitor = new UnitCountVisitor(); // 雙方角色計數
+	private UnitCountVisitor m_UnitCountVisitor = new UnitCountVisitor(); // 雙方角色计数
 
 	//  
 	public GameStateInfoUI( PBaseDefenseGame PBDGame ):base(PBDGame)
@@ -31,19 +31,19 @@ public class GameStateInfoUI : IUserInterface
 	{
 		m_RootUI = UITool.FindUIGameObject( "GameStateInfo" );
 
-		//遊戲訊息
+		//游戏信息
 		m_MsgText = UITool.GetUIComponent<Text>(m_RootUI,"NotifyText");
 		m_MsgText.text = "";
-		// 關卡
+		// 关卡
 		m_NowStageLvText = UITool.GetUIComponent<Text>(m_RootUI,"NowStageLvText");
 		ShowNowStageLv(1);
-		// AP訊息
+		// AP信息
 		m_APText = UITool.GetUIComponent<Text>(m_RootUI,"APText");
 		m_ApSlider = UITool.GetUIComponent<Slider>(m_RootUI,"APSlider");
 		m_ApSlider.maxValue = APSystem.MAX_AP;
 		m_ApSlider.minValue = 0;
 		ShowAP( APSystem.MAX_AP );
-		// 雙方數量
+		// 雙方数量
 		m_SoldierCountText = UITool.GetUIComponent<Text>(m_RootUI,"SoldierCountText");;
 		m_EnemyCountText = UITool.GetUIComponent<Text>(m_RootUI,"EnemyCountText");;
 
@@ -63,7 +63,7 @@ public class GameStateInfoUI : IUserInterface
 		m_GameOverObj = UnityTool.FindChildGameObject( m_RootUI,"GameOver");
 		m_GameOverObj.SetActive(false);
 
-		// 暫停
+		// 暂停
 		btn  = UITool.GetUIComponent<Button>(m_RootUI, "PauseBtn");
 		btn.onClick.AddListener( ()=> OnPauseBtnClick() );
 	}
@@ -80,18 +80,18 @@ public class GameStateInfoUI : IUserInterface
 	{
 		base.Update ();
 
-		// 執行角色計算Visitor
+		// 执行角色计算Visitor
 		m_UnitCountVisitor.Reset();
 		m_PBDGame.RunCharacterVisitor(m_UnitCountVisitor);
 
-		// 雙方數量
-		m_SoldierCountText.text = string.Format("我方單位數:{0}", m_UnitCountVisitor.GetUnitCount( ENUM_Soldier.Null ));
-		m_EnemyCountText.text = string.Format("敵方單位數:{0}", m_UnitCountVisitor.GetUnitCount( ENUM_Enemy.Null ));
+		// 雙方数量
+		m_SoldierCountText.text = string.Format("我方单位数:{0}", m_UnitCountVisitor.GetUnitCount( ENUM_Soldier.Null ));
+		m_EnemyCountText.text = string.Format("敌方单位数:{0}", m_UnitCountVisitor.GetUnitCount( ENUM_Enemy.Null ));
 
 		if( m_MsgTimer <=0)
 			return ;
 
-		// 消除已顯示的訊息
+		// 消除已显示的信息
 		m_MsgTimer -= Time.deltaTime;
 		if(m_MsgTimer > 0)
 			return ;
@@ -99,14 +99,14 @@ public class GameStateInfoUI : IUserInterface
 		m_MsgText.text = "";
 	}
 
-	// 顯示AP
+	// 显示AP
 	public void ShowAP( int Value)
 	{
 		m_ApSlider.value = Value;
 		m_APText.text = Value.ToString();
 	}
 
-	// 顯示Heart數
+	// 显示Heart数
 	public void ShowHeart(int Value)
 	{
 		int i=0;
@@ -119,13 +119,13 @@ public class GameStateInfoUI : IUserInterface
 			ShowGameOver();
 	}
 
-	// 顯示目前關卡
+	// 显示目前关卡
 	public void ShowNowStageLv( int Lv)
 	{
-		m_NowStageLvText.text = string.Format("目前關卡:{0}",Lv);
+		m_NowStageLvText.text = string.Format("目前关卡:{0}",Lv);
 	}
 
-	// 顯示結束
+	// 显示結束
 	private void ShowGameOver()
 	{
 		m_GameOverObj.SetActive(true);
@@ -136,14 +136,14 @@ public class GameStateInfoUI : IUserInterface
 	private void OnContinueBtnClick()
 	{
 		Time.timeScale = 1;
-		// 換回開始State
+		// 换回开始State
 		m_PBDGame.ChangeToMainMenu();
 	}
 
 	// Pause
 	private void OnPauseBtnClick()
 	{
-		// 顯示暫停
+		// 显示暂停
 		m_PBDGame.GamePause();
 	}
 

@@ -2,26 +2,26 @@
 using System;
 using System.Collections;
 
-// 遊戲主迴圈
+// 游戏主迴圈
 public class GameLoop : MonoBehaviour 
 {
-	// 場景狀態
+	// 场景状态
 	SceneStateController m_SceneStateController = new SceneStateController();
 
 	// 
 	void Awake()
 	{
-		// 切換場景不會被刪除
+		// 切换场景不会被刪除
 		GameObject.DontDestroyOnLoad( this.gameObject );		 
 
-		// 亂數種子
+		// 乱数种子
 		UnityEngine.Random.seed =(int)DateTime.Now.Ticks;
 	}
 
 	// Use this for initialization
 	void Start () 
 	{
-		// 設定起始的場景
+		// 设定起始的场景
 		m_SceneStateController.SetState(new StartState(m_SceneStateController), "");
 	}
 

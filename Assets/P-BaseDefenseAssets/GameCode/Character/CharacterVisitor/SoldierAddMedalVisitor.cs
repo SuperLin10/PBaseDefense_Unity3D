@@ -16,7 +16,7 @@ public class SoldierAddMedalVisitor : ICharacterVisitor
 		base.VisitSoldier( Soldier);
 		Soldier.AddMedal();
 
-		// 遊戲事件
+		// 游戏事件
 		m_PBDGame.NotifyGameEvent( ENUM_GameEvent.SoldierUpgate, Soldier); 
 	}
 }

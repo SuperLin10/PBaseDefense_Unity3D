@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 取得P-BaseDefenseGame中所使用的工廠
+// 取得P-BaseDefenseGame中所使用的工厂
 public static class PBDFactory
 {
 	private static bool   		 m_bLoadFromResource = true;
@@ -12,7 +12,7 @@ public static class PBDFactory
 	
 	private static TCharacterFactory_Generic m_TCharacterFactory = null;
 
-	// 取得將Unity Asset實作化的工廠
+	// 取得将Unity Asset实作化的工厂
 	public static IAssetFactory GetAssetFactory()
 	{
 		if( m_AssetFactory == null)
@@ -26,7 +26,7 @@ public static class PBDFactory
 		return m_AssetFactory;
 	}
 
-	// 遊戲角色工廠
+	// 游戏角色工厂
 	public static ICharacterFactory GetCharacterFactory()
 	{
 		if( m_CharacterFactory == null)		
@@ -34,7 +34,7 @@ public static class PBDFactory
 		return m_CharacterFactory;
 	}
 
-	// 遊戲角色工廠(Generic版)
+	// 游戏角色工厂(Generic版)
 	public static TCharacterFactory_Generic GetTCharacterFactory()
 	{
 		if( m_TCharacterFactory == null)		
@@ -42,7 +42,7 @@ public static class PBDFactory
 		return m_TCharacterFactory;
 	}
 
-	// 武器工廠
+	// 武器工厂
 	public static IWeaponFactory GetWeaponFactory()
 	{
 		if( m_WeaponFactory == null)		
@@ -50,7 +50,7 @@ public static class PBDFactory
 		return m_WeaponFactory;
 	}
 
-	// 數值工廠
+	// 数值工厂
 	public static IAttrFactory GetAttrFactory()
 	{
 		if( m_AttrFactory == null)		

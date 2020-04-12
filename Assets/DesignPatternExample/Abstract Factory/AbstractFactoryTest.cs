@@ -1,31 +1,30 @@
-﻿using UnityEngine;
-using System.Collections;
-using DesignPattern_AbstractFactory;
+﻿using DesignPattern_AbstractFactory;
+using UnityEngine;
 
-public class AbstractFactoryTest : MonoBehaviour 
+public class AbstractFactoryTest : MonoBehaviour
 {
-	// Use this for initialization
-	void Start () 
-	{
-		UnitTest();		
-	}
+    // Use this for initialization
+    void Start()
+    {
+        UnitTest();
+    }
 
-	// 測試抽象工廠
-	void UnitTest()
-	{
-		AbstractFactory Factory= null;
+    // 测试抽象工厂
+    void UnitTest()
+    {
+        AbstractFactory Factory = null;
 
-		// 工廠1
-		Factory = new ConcreateFactory1();
-		// 產生兩個產品
-		Factory.CreateProductA();
-		Factory.CreateProductB();
+        // 工厂1
+        Factory = new ConcreateFactory1();
+        // 产生两个产品
+        Factory.CreateProductA();
+        Factory.CreateProductB();
 
-		// 工廠2
-		Factory = new ConcreateFactory2();
-		// 產生兩個產品
-		Factory.CreateProductA();
-		Factory.CreateProductB();
-	}
+        // 工厂2
+        Factory = new ConcreateFactory2();
+        // 产生两个产品
+        Factory.CreateProductA();
+        Factory.CreateProductB();
+    }
 
 }

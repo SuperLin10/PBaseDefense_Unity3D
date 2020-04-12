@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 場景狀態控制者
+// 场景状态控制者
 public class SceneStateController
 {
 	private ISceneState m_State;	
@@ -10,24 +10,24 @@ public class SceneStateController
 	public SceneStateController()
 	{}
 
-	// 設定狀態
+	// 设定状态
 	public void SetState(ISceneState State, string LoadSceneName)
 	{
 		//Debug.Log ("SetState:"+State.ToString());
 		m_bRunBegin = false;
 
-		// 載入場景
+		// 载入场景
 		LoadScene( LoadSceneName );
 
-		// 通知前一個State結束
+		// 通知前一个State結束
 		if( m_State != null )
 			m_State.StateEnd();
 
-		// 設定
+		// 设定
 		m_State=State;	
 	}
 
-	// 載入場景
+	// 载入场景
 	private void LoadScene(string LoadSceneName)
 	{
 		if( LoadSceneName==null || LoadSceneName.Length == 0 )
@@ -38,11 +38,11 @@ public class SceneStateController
 	// 更新
 	public void StateUpdate()
 	{
-		// 是否還在載入
+		// 是否还在载入
 		if( Application.isLoadingLevel)
 			return ;
 
-		// 通知新的State開始
+		// 通知新的State开始
 		if( m_State != null && m_bRunBegin==false)
 		{
 			m_State.StateBegin();

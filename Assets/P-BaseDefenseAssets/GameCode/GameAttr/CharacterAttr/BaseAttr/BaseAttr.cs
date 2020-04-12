@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 可以被共用的基本角色數值界面
+// 可以被共用的基本角色数值界面
 public abstract class BaseAttr
 {			
 	public abstract int 	GetMaxHP();
@@ -9,12 +9,12 @@ public abstract class BaseAttr
 	public abstract string 	GetAttrName();
 }
 
-// 實作可以被共用的基本角色數值
+// 实作可以被共用的基本角色数值
 public class CharacterBaseAttr : BaseAttr
 {
 	private int 	m_MaxHP;		// 最高HP值
-	private float  	m_MoveSpeed;	// 目前移動速度
-	private string 	m_AttrName;		// 數值的名稱	
+	private float  	m_MoveSpeed;	// 目前移动速度
+	private string 	m_AttrName;		// 数值的名称	
 
 	public CharacterBaseAttr(int MaxHP,float MoveSpeed, string AttrName)
 	{
@@ -39,10 +39,10 @@ public class CharacterBaseAttr : BaseAttr
 	}
 }
 
-// 敵方角色的基本數值
+// 敌方角色的基本数值
 public class EnemyBaseAttr : CharacterBaseAttr
 {
-	public int 	m_InitCritRate;	// 爆擊率
+	public int 	m_InitCritRate;	// 爆击率
 	public EnemyBaseAttr(int MaxHP,float MoveSpeed, string AttrName, int CritRate):base(MaxHP,MoveSpeed,AttrName)
 	{
 		m_InitCritRate =CritRate;

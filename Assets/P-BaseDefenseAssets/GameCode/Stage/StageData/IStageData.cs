@@ -1,10 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-
-// 關卡資訊介面
+﻿// 关卡信息界面
 public abstract class IStageData
 {
-	public abstract void Update();
-	public abstract	bool IsFinished();
-	public abstract	void Reset();
+    public abstract void Update();
+    public abstract bool IsFinished();
+    public abstract void Reset();
 }

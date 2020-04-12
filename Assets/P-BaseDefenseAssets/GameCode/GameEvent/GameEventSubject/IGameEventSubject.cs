@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-// 遊戲事件主題
+// 游戏事件主题
 public class IGameEventSubject 
 {
-	private List<IGameEventObserver> m_Observers = new List<IGameEventObserver>(); // 觀測者
-	private System.Object m_Param = null;	// 發生事件時附加的參數
+	private List<IGameEventObserver> m_Observers = new List<IGameEventObserver>(); // 观測者
+	private System.Object m_Param = null;	// 发生事件时附加的参数
 
 	// 加入
 	public void Attach(IGameEventObserver theObserver)
@@ -26,7 +26,7 @@ public class IGameEventSubject
 			theObserver.Update();
 	}
 
-	// 設定參數
+	// 设定参数
 	public virtual void SetParam( System.Object Param )
 	{
 		m_Param = Param;

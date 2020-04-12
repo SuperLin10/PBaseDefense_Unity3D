@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 新的關卡
+// 新的关卡
 public class NewStageSubject : IGameEventSubject
 {
 	private int m_StageCount = 1;
@@ -9,7 +9,7 @@ public class NewStageSubject : IGameEventSubject
 	public NewStageSubject()
 	{}
 
-	// 目前關卡數
+	// 目前关卡数
 	public int GetStageCount()
 	{
 		return m_StageCount;

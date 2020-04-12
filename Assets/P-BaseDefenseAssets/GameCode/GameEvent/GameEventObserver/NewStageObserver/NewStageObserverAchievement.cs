@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 成就觀測新關卡
+// 成就观測新关卡
 public class NewStageObserverAchievement : IGameEventObserver 
 {
 	private NewStageSubject m_Subject = null;
@@ -12,7 +12,7 @@ public class NewStageObserverAchievement : IGameEventObserver
 		m_AchievementSystem = AchievementSystem;
 	}
 
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject Subject )
 	{
 		m_Subject = Subject as NewStageSubject;

@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// UI觀測Soldier陣亡事件
+// UI观測Soldier阵亡事件
 public class SoldierKilledObserverUI : IGameEventObserver 
 {
-	private SoldierKilledSubject m_Subject = null; // 主題
-	private SoldierInfoUI m_InfoUI = null;	//  要通知的介面
+	private SoldierKilledSubject m_Subject = null; // 主题
+	private SoldierInfoUI m_InfoUI = null;	//  要通知的界面
 
 	public SoldierKilledObserverUI( SoldierInfoUI InfoUI  )
 	{
 		m_InfoUI = InfoUI;
 	}
 
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject Subject )
 	{
 		m_Subject = Subject as SoldierKilledSubject;

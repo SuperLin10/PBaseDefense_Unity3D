@@ -4,14 +4,14 @@ using System.Collections;
 
 public static class UITool
 {
-	private static GameObject m_CanvasObj = null; // 場景上的2D畫布物件
+	private static GameObject m_CanvasObj = null; // 场景上的2D画布物件
 
 	public static void ReleaseCanvas()
 	{
 		m_CanvasObj = null;
 	}
 
-	// 找尋限定在Canvas畫布下的UI界面
+	// 找尋限定在Canvas画布下的UI界面
 	public static GameObject FindUIGameObject(string UIName)
 	{
 		if(m_CanvasObj == null)
@@ -44,11 +44,11 @@ public static class UITool
 		GameObject UIRoot = GameObject.Find("Canvas");
 		if(UIRoot==null)
 		{
-			Debug.LogWarning("場景上沒有UI Canvas");
+			Debug.LogWarning("场景上沒有UI Canvas");
 			return null;
 		}
 		
-		// 找出對應的Button
+		// 找出对应的Button
 		Transform[] allChildren = UIRoot.GetComponentsInChildren<Transform>();
 		foreach(Transform child in allChildren)
 		{
@@ -72,7 +72,7 @@ public static class UITool
 		GameObject UIRoot = GameObject.Find("Canvas");
 		if(UIRoot==null)
 		{
-			Debug.LogWarning("場景上沒有UI Canvas");
+			Debug.LogWarning("场景上沒有UI Canvas");
 			return null;
 		}
 		return GetUIComponent<T>( UIRoot,UIName); 

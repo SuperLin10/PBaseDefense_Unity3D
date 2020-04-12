@@ -1,43 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 玩家單位(士兵)的數值計算策略
+// 玩家单位(士兵)的数值计算策略
 public class SoldierAttrStrategy : IAttrStrategy 
 {
-	// 初始的數值
+	// 初始的数值
 	public override void InitAttr( ICharacterAttr CharacterAttr )
 	{
-		// 是否為士兵類別
+		// 是否为士兵类别
 		SoldierAttr theSoldierAttr = CharacterAttr as SoldierAttr;
 		if(theSoldierAttr==null)
 			return ;
 
-		// 最大生命力有等級加乘
+		// 最大生命力有等级加乘
 		int AddMaxHP = 0;
 		int Lv = theSoldierAttr.GetSoldierLv();
 		if(Lv > 0 )
 			AddMaxHP = (Lv-1)*2;
 	
-		// 設定最高HP
+		// 设定最高HP
 		theSoldierAttr.AddMaxHP( AddMaxHP );
 	}
 	
-	// 攻擊加乘
+	// 攻击加乘
 	public override int GetAtkPlusValue( ICharacterAttr CharacterAttr )
 	{
-		// 沒有攻擊加乘
+		// 沒有攻击加乘
 		return 0;
 	}
 	
-	// 取得減傷害值
+	// 取得减伤害值
 	public override int GetDmgDescValue( ICharacterAttr CharacterAttr )
 	{
-		// 是否為士兵類別
+		// 是否为士兵类别
 		SoldierAttr theSoldierAttr = CharacterAttr as SoldierAttr;
 		if(theSoldierAttr==null)
 			return 0;
 
-		// 回傳減傷值
+		// 回传减伤值
 		return (theSoldierAttr.GetSoldierLv()-1)*2;;
 	}
 

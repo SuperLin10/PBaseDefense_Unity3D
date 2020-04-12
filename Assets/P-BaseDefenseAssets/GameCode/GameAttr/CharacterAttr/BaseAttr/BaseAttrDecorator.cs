@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-// 用於加乘用的數值
+// 用于加乘用的数值
 public class AdditionalAttr
 {
 	private int 	m_Strength;	// 力量
 	private int  	m_Agility;	// 敏捷
-	private string 	m_Name;		// 數值的名稱	
+	private string 	m_Name;		// 数值的名称	
 	
 	public AdditionalAttr(int Strength,int Agility, string Name)
 	{
@@ -33,19 +33,19 @@ public class AdditionalAttr
 
 
 
-// 基本角色數值裝飾者
+// 基本角色数值装饰者
 public abstract class BaseAttrDecorator : BaseAttr
 {
-	protected BaseAttr 			m_Component; 		// 被裝飾對像
-	protected AdditionalAttr 	m_AdditionialAttr; 	// 代表額外加乘的數值
+	protected BaseAttr 			m_Component; 		// 被装饰對像
+	protected AdditionalAttr 	m_AdditionialAttr; 	// 代表额外加乘的数值
 	
-	// 設定裝飾的目標
+	// 设定装饰的目标
 	public void SetComponent(BaseAttr theComponent)
 	{
 		m_Component = theComponent;
 	}
 
-	// 設定額外使用的值
+	// 设定额外使用的值
 	public void SetAdditionalAttr (AdditionalAttr theAdditionalAttr)
 	{
 		m_AdditionialAttr = theAdditionalAttr;
@@ -68,7 +68,7 @@ public abstract class BaseAttrDecorator : BaseAttr
 }
 
 
-// 裝飾類型
+// 装饰类型
 public enum ENUM_AttrDecorator
 {
 	Prefix,
@@ -122,7 +122,7 @@ public class SuffixBaseAttr : BaseAttrDecorator
 // 直接強化
 public class StrengthenBaseAttr : BaseAttrDecorator
 {
-	protected List<AdditionalAttr> 	m_AdditionialAttrs; 	// 多個強化的數值
+	protected List<AdditionalAttr> 	m_AdditionialAttrs; 	// 多个強化的数值
 
 	public StrengthenBaseAttr()
 	{}

@@ -14,23 +14,23 @@ public class ShapeVisitorTest : MonoBehaviour {
 	{
 		DirectX theDirectX = new DirectX();
 		
-		// 加入形狀
+		// 加入形状
 		ShapeContainer theShapeContainer = new ShapeContainer();
 		theShapeContainer.AddShape( new Cube(theDirectX) );
 		theShapeContainer.AddShape( new Cylinder(theDirectX) );
 		theShapeContainer.AddShape( new Sphere(theDirectX) );
 		
-		// 繪圖
+		// 绘圆
 		theShapeContainer.RunVisitor(new DrawVisitor());
 		
-		// 頂點數
+		// 顶点数
 		VectorCountVisitor theVectorCount = new VectorCountVisitor();
 		theShapeContainer.RunVisitor( theVectorCount );
-		Debug.Log("頂點數:"+ theVectorCount.Count );
+		Debug.Log("顶点数:"+ theVectorCount.Count );
 		
-		// 圓體積
+		// 圆体积
 		SphereVolumeVisitor theSphereVolume = new SphereVolumeVisitor();
 		theShapeContainer.RunVisitor( theSphereVolume );
-		Debug.Log("圓體積:"+ theSphereVolume.Volume );
+		Debug.Log("圆体积:"+ theSphereVolume.Volume );
 	}
 }

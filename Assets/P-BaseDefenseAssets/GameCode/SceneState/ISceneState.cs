@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 場景狀態
+// 场景状态
 public class ISceneState
 {
-	// 狀態名稱
+	// 状态名称
 	private string m_StateName = "ISceneState";
 	public string StateName
 	{
@@ -15,13 +15,13 @@ public class ISceneState
 	// 控制者
 	protected SceneStateController m_Controller = null;
 		
-	// 建構者
+	// 构建者
 	public ISceneState(SceneStateController Controller)
 	{ 
 		m_Controller = Controller; 
 	}
 
-	// 開始
+	// 开始
 	public virtual void StateBegin()
 	{}
 

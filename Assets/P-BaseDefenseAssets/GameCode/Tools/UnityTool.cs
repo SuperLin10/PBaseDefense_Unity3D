@@ -23,7 +23,7 @@ public static class UnityTool
 			{                
 				if (bFinded == true)
 				{
-					Debug.LogWarning("物件["+ParentObj.transform.name+"]內有兩個以上的參考點["+RefPointName+"]");
+					Debug.LogWarning("物件["+ParentObj.transform.name+"]內有两个以上的參考点["+RefPointName+"]");
 					continue;
 				}
 				bFinded = true;
@@ -34,7 +34,7 @@ public static class UnityTool
 		//  是否找到
 		if (bFinded == false)
 		{
-			Debug.LogWarning("物件["+ParentObj.transform.name+"]內沒有參考點["+RefPointName+"]");
+			Debug.LogWarning("物件["+ParentObj.transform.name+"]內沒有參考点["+RefPointName+"]");
 			Attach( ParentObj,ChildObj,Pos);
 			return ;
 		}
@@ -45,14 +45,14 @@ public static class UnityTool
 		ChildObj.transform.localRotation = Quaternion.Euler( Vector3.zero);				
 	}
 	
-	// 找到場景上的物件
+	// 找到场景上的物件
 	public static GameObject FindGameObject(string GameObjectName)
 	{
-		// 找出對應的GameObject
+		// 找出对应的GameObject
 		GameObject pTmpGameObj = GameObject.Find(GameObjectName);
 		if(pTmpGameObj==null)
 		{
-			Debug.LogWarning("景場中找不到GameObject["+GameObjectName+"]物件");
+			Debug.LogWarning("景场中找不到GameObject["+GameObjectName+"]物件");
 			return null;
 		}
 		return pTmpGameObj;
@@ -84,7 +84,7 @@ public static class UnityTool
 					if(pGameObjectTF==null)					
 						pGameObjectTF=child;
 					else
-						Debug.LogWarning("Container["+Container.name+"]下找出重覆的元件名稱["+gameobjectName+"]");
+						Debug.LogWarning("Container["+Container.name+"]下找出重覆的元件名称["+gameobjectName+"]");
 				}
 			}
 		}

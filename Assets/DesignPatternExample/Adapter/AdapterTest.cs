@@ -1,18 +1,19 @@
-﻿using UnityEngine;
-using System.Collections;
-using DesignPattern_Adapter;
+﻿using DesignPattern_Adapter;
+using UnityEngine;
 
-public class AdapterTest : MonoBehaviour {
+public class AdapterTest : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		UnitTest();	
-	}
-	
-	// 
-	void UnitTest () 
-	{
-		Target theTarget = new Adapter();
-		theTarget.Request();
-	}
+    // Use this for initialization
+    void Start()
+    {
+        UnitTest();
+    }
+
+    // 
+    void UnitTest()
+    {
+        Target theTarget = new Adapter();
+        theTarget.Request();
+    }
 }

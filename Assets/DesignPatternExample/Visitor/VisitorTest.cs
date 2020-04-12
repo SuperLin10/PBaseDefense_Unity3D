@@ -14,7 +14,7 @@ public class VisitorTest : MonoBehaviour {
 	{
 		ObjectStructure theStructure = new ObjectStructure();
 
-		// 將Vicitor走訪ObjectStructure裡的各元表
+		// 将Vicitor走访ObjectStructure裡的各元表
 		theStructure.RunVisitor(new ConcreteVicitor1());
 		theStructure.RunVisitor(new ConcreteVicitor2());			
 	}

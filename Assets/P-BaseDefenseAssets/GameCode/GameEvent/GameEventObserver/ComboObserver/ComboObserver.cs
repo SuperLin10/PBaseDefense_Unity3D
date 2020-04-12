@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 我方連續擊退事件
+// 我方連續击退事件
 public class ComboObserver : IGameEventObserver 
 {
 	private SoldierKilledSubject m_SoldierKilledSubject = null;
@@ -17,7 +17,7 @@ public class ComboObserver : IGameEventObserver
 		m_PBDGame = PBDGame;
 	}
 	
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject theSubject )
 	{
 		if( theSubject is SoldierKilledSubject )
@@ -32,11 +32,11 @@ public class ComboObserver : IGameEventObserver
 		int NowSoldierKilledCount = m_SoldierKilledSubject.GetKilledCount();
 		int NowEnemyKilledCount = m_EnemyKilledSubject.GetKilledCount();
 
-		// 玩家單位陣亡,重置計數器
+		// 玩家单位阵亡,重置计数器
 		if( NowSoldierKilledCount > m_SoldierKilledCount)
 			m_EnemyComboCount = 0;
 
-		// 增加計數器
+		// 增加计数器
 		if( NowEnemyKilledCount > m_EnemyKilledCount)
 			m_EnemyComboCount ++;
 
@@ -44,6 +44,6 @@ public class ComboObserver : IGameEventObserver
 		m_EnemyKilledCount = NowEnemyKilledCount;
 
 		// 通知
-		m_PBDGame.ShowGameMsg("連續擊退敵人數:"+m_EnemyComboCount.ToString());
+		m_PBDGame.ShowGameMsg("連續击退敌人数:"+m_EnemyComboCount.ToString());
 	}	
 }

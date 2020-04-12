@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace DesignPattern_Visitor
 {	
-	// 固定的元素, 定義給Visitor存取的介面
+	// 固定的元素, 定义给Visitor存取的界面
 	public abstract class Visitor
 	{	
-		// 可以寫一個通用的函式名稱但以用不同的參數來產生多樣化方法
+		// 可以写一个通用的函式名称但以用不同的参数来产生多样化方法
 		public abstract void VisitConcreteElement( ConcreteElementA theElement);
 		public abstract void VisitConcreteElement( ConcreteElementB theElement);
 
 
-		// 或可以針對Element的子元件做不同的執行動作
+		// 或可以针对Element的子元件做不同的执行动作
 		public abstract void VisitConcreteElementA( ConcreteElementA theElement);
 		public abstract void VisitConcreteElementB( ConcreteElementB theElement);
 
 
 	}
 
-	// 制訂以Visitor物件當參數的Accept()介面
+	// 制订以Visitor物件当参数的Accept()界面
 	public abstract class Element
 	{	
 		public abstract void Accept( Visitor theVisitor);		
@@ -54,10 +54,10 @@ namespace DesignPattern_Visitor
 		}
 	}
 	
-	// 實作功能操作Visitor1
+	// 实作功能操作Visitor1
 	public class ConcreteVicitor1 : Visitor
 	{
-		// 可以寫一個通用的函式名稱但以用不同的參數來產生多樣化方法
+		// 可以写一个通用的函式名称但以用不同的参数来产生多样化方法
 		public override void VisitConcreteElement( ConcreteElementA theElement)
 		{
 			Debug.Log ("ConcreteVicitor1:VisitConcreteElement(A)");
@@ -80,10 +80,10 @@ namespace DesignPattern_Visitor
 		}
 	}
 
-	// 實作功能操作Visitor2
+	// 实作功能操作Visitor2
 	public class ConcreteVicitor2 : Visitor
 	{
-		// 可以寫一個通用的函式名稱但以用不同的參數來產生多樣化方法
+		// 可以写一个通用的函式名称但以用不同的参数来产生多样化方法
 		public override void VisitConcreteElement( ConcreteElementA theElement)
 		{
 			Debug.Log ("ConcreteVicitor2:VisitConcreteElement(A)");
@@ -106,7 +106,7 @@ namespace DesignPattern_Visitor
 		}	
 	}
 		
-	// 用來存儲所有的Element	
+	// 用来存储所有的Element	
 	public class ObjectStructure
 	{
 		List<Element> m_Context = new List<Element>();
@@ -117,7 +117,7 @@ namespace DesignPattern_Visitor
 			m_Context.Add( new ConcreteElementB());
 		}
 		
-		// 載入不同的Action(Visitor)來判斷
+		// 载入不同的Action(Visitor)来判断
 		public void RunVisitor(Visitor theVisitor)
 		{
 			foreach(Element theElement in m_Context )

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 產生遊戲角色工廠界面
+// 产生游戏角色工厂界面
 public abstract class ICharacterFactory
 {
 	// 建立Soldier

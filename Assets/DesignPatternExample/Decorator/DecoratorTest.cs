@@ -1,47 +1,47 @@
-﻿using UnityEngine;
-using System.Collections;
-using DesignPattern_Decorator;
+﻿using DesignPattern_Decorator;
 using DesignPattern_ShapeDecorator;
+using UnityEngine;
 
-public class DecoratorTest : MonoBehaviour {
+public class DecoratorTest : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		//UnitTest();	
-		UnitTest_Shape();
-	}
-	
-	// 
-	void UnitTest () {
+    // Use this for initialization
+    void Start()
+    {
+        //UnitTest();	
+        UnitTest_Shape();
+    }
 
-		// 物件
-		ConcreteComponent theComponent = new ConcreteComponent();
+    // 
+    void UnitTest()
+    {
+        // 物件
+        ConcreteComponent theComponent = new ConcreteComponent();
 
-		// 增加Decorator
-		ConcreteDecoratorA theDecoratorA = new ConcreteDecoratorA( theComponent );
-		theDecoratorA.Operator();
+        // 增加Decorator
+        ConcreteDecoratorA theDecoratorA = new ConcreteDecoratorA(theComponent);
+        theDecoratorA.Operator();
 
-		ConcreteDecoratorB theDecoratorB = new ConcreteDecoratorB( theComponent );
-		theDecoratorB.Operator();
+        ConcreteDecoratorB theDecoratorB = new ConcreteDecoratorB(theComponent);
+        theDecoratorB.Operator();
 
-		// 再增加一層
-		ConcreteDecoratorB theDecoratorB2 = new ConcreteDecoratorB( theDecoratorA );
-		theDecoratorB2.Operator();
-	}
+        // 再增加一层
+        ConcreteDecoratorB theDecoratorB2 = new ConcreteDecoratorB(theDecoratorA);
+        theDecoratorB2.Operator();
+    }
 
-	// 
-	void UnitTest_Shape() 
-	{
-		OpenGL theOpenGL = new OpenGL();
+    // 
+    void UnitTest_Shape()
+    {
+        OpenGL theOpenGL = new OpenGL();
 
-		// 圓型
-		Sphere theSphere = new Sphere();
-		theSphere.SetRenderEngine( theOpenGL );
+        // 圆形
+        Sphere theSphere = new Sphere();
+        theSphere.SetRenderEngine(theOpenGL);
 
-		//在圖型加外框
-		BorderDecorator theSphereWithBorder = new BorderDecorator( theSphere );
-		theSphereWithBorder.SetRenderEngine( theOpenGL );
-		theSphereWithBorder.Draw();
-
-	}
+        //在圆形加外框
+        BorderDecorator theSphereWithBorder = new BorderDecorator(theSphere);
+        theSphereWithBorder.SetRenderEngine(theOpenGL);
+        theSphereWithBorder.Draw();
+    }
 }

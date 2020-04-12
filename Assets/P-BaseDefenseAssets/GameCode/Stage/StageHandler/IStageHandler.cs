@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 關卡界面
+// 关卡界面
 public abstract class IStageHandler
 {
-	protected IStageHandler m_NextHandler = null;// 下一個關卡
+	protected IStageHandler m_NextHandler = null;// 下一个关卡
 	protected IStageData	m_StatgeData  = null;
-	protected IStageScore   m_StageScore  = null;// 關卡的分數
+	protected IStageScore   m_StageScore  = null;// 关卡的分数
 
-	// 設定下一個關卡
+	// 设定下一个关卡
 	public IStageHandler SetNextHandler(IStageHandler NextHandler)
 	{
 		m_NextHandler = NextHandler;

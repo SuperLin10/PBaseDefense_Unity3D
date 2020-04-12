@@ -12,18 +12,18 @@ public class ObserverTest : MonoBehaviour {
 	// Update is called once per frame
 	void UnitTest () 
 	{
-		// 主題
+		// 主题
 		ConcreteSubject theSubject = new ConcreteSubject();
 
-		// 加入觀察者
+		// 加入观察者
 		ConcreteObserver1 theObserver1 = new ConcreteObserver1(theSubject);
 		theSubject.Attach( theObserver1 );
 		theSubject.Attach( new ConcreteObserver2(theSubject) );
 
-		// 設定Subject
-		theSubject.SetState("Subject狀態1");
+		// 设定Subject
+		theSubject.SetState("Subject状态1");
 
-		// 顯示狀態
+		// 显示状态
 		theObserver1.ShowState();	
 	}
 }

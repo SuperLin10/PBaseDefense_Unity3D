@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-// 主選單狀態
+// 主選单状态
 public class MainMenuState : ISceneState
 {
 	public MainMenuState(SceneStateController Controller):base(Controller)
@@ -10,16 +10,16 @@ public class MainMenuState : ISceneState
 		this.StateName = "MainMenuState";
 	}
 
-	// 開始
+	// 开始
 	public override void StateBegin()
 	{
-		// 取得開始按鈕
+		// 取得开始按鈕
 		Button tmpBtn = UITool.GetUIComponent<Button>("StartGameBtn");
 		if(tmpBtn!=null)
 			tmpBtn.onClick.AddListener( ()=> OnStartGameBtnClick(tmpBtn) );
 	}
 			
-	// 開始戰鬥
+	// 开始战鬥
 	private void OnStartGameBtnClick(Button theButton)
 	{
 		//Debug.Log ("OnStartBtnClick:"+theButton.gameObject.name);

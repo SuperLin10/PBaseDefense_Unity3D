@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 成就觀測Soldier陣亡事件
+// 成就观測Soldier阵亡事件
 public class SoldierKilledObserverAchievement : IGameEventObserver 
 {
 	private SoldierKilledSubject m_Subject = null;
@@ -12,7 +12,7 @@ public class SoldierKilledObserverAchievement : IGameEventObserver
 		m_AchievementSystem = AchievementSystem;
 	}
 
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject Subject )
 	{
 		m_Subject = Subject as SoldierKilledSubject;

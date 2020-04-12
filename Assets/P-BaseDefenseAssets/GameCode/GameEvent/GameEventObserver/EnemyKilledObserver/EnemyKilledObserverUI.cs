@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// UI觀測Enemey陣亡事件
+// UI观測Enemey阵亡事件
 public class EnemyKilledObserverUI : IGameEventObserver 
 {
 	private EnemyKilledSubject m_Subject = null;
@@ -12,7 +12,7 @@ public class EnemyKilledObserverUI : IGameEventObserver
 		m_PBDGame = PBDGame;
 	}
 
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject Subject )
 	{
 		m_Subject = Subject as EnemyKilledSubject;
@@ -23,7 +23,7 @@ public class EnemyKilledObserverUI : IGameEventObserver
 	{
 		//Debug.Log("EnemyKilledObserverUI.Update: Count["+ m_Subject.GetKilledCount() +"]");
 		if(m_PBDGame!=null)
-			m_PBDGame.ShowGameMsg("敵方單位陣亡");
+			m_PBDGame.ShowGameMsg("敌方单位阵亡");
 
 	}
 

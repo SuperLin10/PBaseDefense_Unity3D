@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace DesignPattern_State
 {
-	// 持有目前的狀態,並將有關的訊息傳給狀態
+	// 持有目前的状态,并将有关的信息传给状态
 	public class Context
 	{
 		State	m_State = null;
@@ -20,7 +20,7 @@ namespace DesignPattern_State
 		}
 	}
 
-	// 負責封裝當Context處於特定狀態時所該展現的行為
+	// 负责封装当Context处于特定状态时所该展現的行为
 	public abstract class State
 	{
 		protected Context m_Context = null;
@@ -32,7 +32,7 @@ namespace DesignPattern_State
 		public abstract void Handle(int Value);
 	}
 
-	// 狀態A
+	// 状态A
 	public class ConcreteStateA : State
 	{
 		public ConcreteStateA( Context theContext):base(theContext)
@@ -47,7 +47,7 @@ namespace DesignPattern_State
 
 	}
 
-	// 狀態B
+	// 状态B
 	public class ConcreteStateB : State
 	{
 		public ConcreteStateB( Context theContext):base(theContext)
@@ -62,7 +62,7 @@ namespace DesignPattern_State
 		
 	}
 
-	// 狀態C
+	// 状态C
 	public class ConcreteStateC : State
 	{
 		public ConcreteStateC( Context theContext):base(theContext)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 關卡分數觀測Enemey陣亡事件
+// 关卡分数观測Enemey阵亡事件
 public class EnemyKilledObserverStageScore : IGameEventObserver 
 {
 	private EnemyKilledSubject m_Subject = null;
@@ -12,7 +12,7 @@ public class EnemyKilledObserverStageScore : IGameEventObserver
 		m_StageSystem = theStageSystem;
 	}
 
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject Subject )
 	{
 		m_Subject = Subject as EnemyKilledSubject;

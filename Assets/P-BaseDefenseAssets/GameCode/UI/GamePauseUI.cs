@@ -43,17 +43,17 @@ public class GamePauseUI : IUserInterface
 
 	public override void Show ()
 	{
-		// 顯示相關訊息
+		// 显示相关信息
 		Time.timeScale = 0;
 		base.Show ();
 	}
 	
-	// 顯示暫停
+	// 显示暂停
 	public void ShowGamePause(  AchievementSaveData SaveData )
 	{
-		m_EnemyKilledCountText.text = string.Format("目前殺敵數總合:{0}",SaveData.EnemyKilledCount);
-		m_SoldierKilledCountText.text = string.Format("目前我方單位陣亡總合:{0}",SaveData.SoldierKilledCount);
-		m_StageLvCountText.text = string.Format("最高關卡數:{0}",SaveData.StageLv); 		
+		m_EnemyKilledCountText.text = string.Format("目前殺敌数總合:{0}",SaveData.EnemyKilledCount);
+		m_SoldierKilledCountText.text = string.Format("目前我方单位阵亡總合:{0}",SaveData.SoldierKilledCount);
+		m_StageLvCountText.text = string.Format("最高关卡数:{0}",SaveData.StageLv); 		
 		Show();
 	}
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // 
 namespace ShapeVisitor
 {
-	// 繪圖引擎
+	// 绘圆引擎
 	public abstract class RenderEngine
 	{
 		public abstract void Render(string ObjName);
@@ -48,66 +48,66 @@ namespace ShapeVisitor
 		}
 	}
 
-	// 訪問者界面
+	// 访问者界面
 	public abstract class IShapeVisitor
 	{
-		// Sphere類別呼叫用
+		// Sphere类别呼叫用
 		public virtual void VisitSphere(Sphere theSphere)
 		{}
-		// Cube類別呼叫用
+		// Cube类别呼叫用
 		public virtual void VisitCube(Cube theCube)
 		{}
-		// Cylinder類別呼叫用
+		// Cylinder类别呼叫用
 		public virtual void VisitCylinder(Cylinder theCylinder)
 		{}
 	}
 
-	// 繪圖
+	// 绘圆
 	public class DrawVisitor : IShapeVisitor
 	{
-		// Sphere類別呼叫用
+		// Sphere类别呼叫用
 		public override void VisitSphere(Sphere theSphere)
 		{
 			theSphere.Draw();
 		}
-		// Cube類別呼叫用
+		// Cube类别呼叫用
 		public override void VisitCube(Cube theCube)
 		{
 			theCube.Draw();
 		}
-		// Cylinder類別呼叫用
+		// Cylinder类别呼叫用
 		public override void VisitCylinder(Cylinder theCylinder)
 		{
 			theCylinder.Draw();
 		}
 	}
 
-	// 計數
+	// 计数
 	public class VectorCountVisitor : IShapeVisitor
 	{
 		public int Count = 0;
-		// Sphere類別呼叫用
+		// Sphere类别呼叫用
 		public override void VisitSphere(Sphere theSphere)
 		{
 			Count += theSphere.GetVectorCount();
 		}
-		// Cube類別呼叫用
+		// Cube类别呼叫用
 		public override void VisitCube(Cube theCube)
 		{
 			Count += theCube.GetVectorCount();
 		}
-		// Cylinder類別呼叫用
+		// Cylinder类别呼叫用
 		public override void VisitCylinder(Cylinder theCylinder)
 		{
 			Count += theCylinder.GetVectorCount();
 		}
 	}
 
-	// 只計算圓型體積
+	// 只计算圆形体积
 	public class SphereVolumeVisitor : IShapeVisitor
 	{
 		public float Volume;
-		// Sphere類別呼叫用
+		// Sphere类别呼叫用
 		public override void VisitSphere(Sphere theSphere)
 		{
 			Volume += theSphere.GetVolume();
@@ -115,12 +115,12 @@ namespace ShapeVisitor
 	}
 
 
-	// 形狀
+	// 形状
 	public abstract class IShape
 	{
-		protected RenderEngine m_RenderEngine = null; 	// 使用的繪圖引擎
-		protected Vector3 m_Position = Vector3.zero;	// 顯示位置
-		protected Vector3 m_Scale = Vector3.zero;		// 大小(縮放)
+		protected RenderEngine m_RenderEngine = null; 	// 使用的绘圆引擎
+		protected Vector3 m_Position = Vector3.zero;	// 显示位置
+		protected Vector3 m_Scale = Vector3.zero;		// 大小(缩放)
 
 		public void SetRenderEngine( RenderEngine theRenderEngine )
 		{
@@ -137,13 +137,13 @@ namespace ShapeVisitor
 			return m_Scale;
 		}
 
-		public abstract void 	Draw();		 // 繪出
-		public abstract float 	GetVolume(); // 取得體積
-		public abstract int		GetVectorCount(); // 取得頂點數
+		public abstract void 	Draw();		 // 绘出
+		public abstract float 	GetVolume(); // 取得体积
+		public abstract int		GetVectorCount(); // 取得顶点数
 		public abstract void 	RunVisitor(IShapeVisitor theVisitor);
 	}
 
-	// 圓球
+	// 圆球
 	public class Sphere : IShape
 	{
 		public Sphere(RenderEngine theRenderEngine)
@@ -172,7 +172,7 @@ namespace ShapeVisitor
 		}
 	}
 
-	// 方塊
+	// 方块
 	public class Cube : IShape
 	{	
 		public Cube(RenderEngine theRenderEngine)
@@ -201,7 +201,7 @@ namespace ShapeVisitor
 		}
 	}
 
-	// 圖柱體
+	// 圆柱体
 	public class Cylinder : IShape
 	{	
 		public Cylinder(RenderEngine theRenderEngine)
@@ -230,7 +230,7 @@ namespace ShapeVisitor
 		}
 	}
 
-	// 形狀容器
+	// 形状容器
 	public class ShapeContainer
 	{
 		List<IShape> m_Shapes = new List<IShape>();
@@ -243,7 +243,7 @@ namespace ShapeVisitor
 			m_Shapes.Add ( theShape );
 		}
 
-		// 共用的訪問者界面
+		// 共用的访问者界面
 		public void RunVisitor(IShapeVisitor theVisitor)
 		{
 			foreach(IShape theShape in m_Shapes)

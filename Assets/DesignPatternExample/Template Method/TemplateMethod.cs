@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace DesignPattern_TemplateMethod
 {
-	// 定義完整演算法各步驟及執行順序
+	// 定义完整演算法各步骤及执行顺序
 	public abstract class AbstractClass
 	{
 		public void TemplateMethod()
@@ -15,7 +15,7 @@ namespace DesignPattern_TemplateMethod
 		protected abstract void PrimitiveOperation2();
 	}
 
-	// 實作演算法各步驟
+	// 实作演算法各步骤
 	public class ConcreteClassA : AbstractClass
 	{
 		protected override void PrimitiveOperation1()
@@ -28,7 +28,7 @@ namespace DesignPattern_TemplateMethod
 		}
 	}
 	
-	// 實作演算法各步驟
+	// 实作演算法各步骤
 	public class ConcreteClassB : AbstractClass
 	{
 		protected override void PrimitiveOperation1()

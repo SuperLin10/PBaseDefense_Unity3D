@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 一般關卡
+// 一般关卡
 public class NormalStageHandler : IStageHandler 
 {
-	// 設定分數及關卡資料
+	// 设定分数及关卡资料
 	public NormalStageHandler(IStageScore StateScore, IStageData StageData )
 	{
 		m_StageScore  = StateScore;
 		m_StatgeData  = StageData;
 	}
 		
-	// 確認關卡
+	// 确认关卡
 	public override IStageHandler CheckStage()
 	{
-		// 分數是否足夠
+		// 分数是否足够
 		if( m_StageScore.CheckScore()==false)
 			return this;
 
-		// 已經是最後一關了
+		// 已經是最后一关了
 		if(m_NextHandler==null)
 			return this;		
 
-		// 確認下一個關卡
+		// 确认下一个关卡
 		return m_NextHandler.CheckStage();
 	}
 	

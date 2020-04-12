@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 武器工廠
+// 武器工厂
 public class WeaponFactory : IWeaponFactory 
 {
 	public WeaponFactory()
@@ -12,7 +12,7 @@ public class WeaponFactory : IWeaponFactory
 	public override IWeapon CreateWeapon( ENUM_Weapon emWeapon)
 	{
 		IWeapon pWeapon = null;
-		string	AssetName = "";	// Unity模型名稱
+		string	AssetName = "";	// Unity模型名称
 		int		AttrID = 0; 	// 武器的能力值
 
 		// 依武器
@@ -34,11 +34,11 @@ public class WeaponFactory : IWeaponFactory
 			AttrID	= 3;
 			break;		
 		default:
-			Debug.LogWarning("CreateWeapon:無法建立["+emWeapon+"]");
+			Debug.LogWarning("CreateWeapon:无法建立["+emWeapon+"]");
 			return null;
 		}
 
-		// 產生Asset
+		// 产生Asset
 		IAssetFactory AssetFactory = PBDFactory.GetAssetFactory();
 		GameObject WeaponGameObjet = AssetFactory.LoadWeapon( AssetName );
 		pWeapon.SetGameObject( WeaponGameObjet );
@@ -47,7 +47,7 @@ public class WeaponFactory : IWeaponFactory
 		IAttrFactory theAttrFactory = PBDFactory.GetAttrFactory();
 		WeaponAttr theWeaponAttr = theAttrFactory.GetWeaponAttr( AttrID ); 
 
-		// 設定武器的威力
+		// 设定武器的威力
 		pWeapon.SetWeaponAttr( theWeaponAttr );
 
 		return pWeapon;

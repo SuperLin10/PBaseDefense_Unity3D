@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 敵人單位陣亡
+// 敌人单位阵亡
 public class EnemyKilledSubject : IGameEventSubject
 {
 	private	int	m_KilledCount = 0;
@@ -16,13 +16,13 @@ public class EnemyKilledSubject : IGameEventSubject
 		return m_Enemy;
 	}
 
-	// 目前敵人單位陣亡數
+	// 目前敌人单位阵亡数
 	public int GetKilledCount()
 	{
 		return m_KilledCount;
 	}
 
-	// 通知敵人單位陣亡
+	// 通知敌人单位阵亡
 	public override void SetParam( System.Object Param )
 	{
 		base.SetParam( Param);

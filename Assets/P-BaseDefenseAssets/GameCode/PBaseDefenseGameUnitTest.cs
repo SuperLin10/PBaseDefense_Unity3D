@@ -50,12 +50,12 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
         // 建立Soldier
 		ISoldier theSoldier = Factory.CreateSoldier( ENUM_Soldier.Rookie, ENUM_Weapon.Gun, 1,new Vector3(0,0,0) );
 
-		// 加上前輟能力
+		// 加上前缀能力
 		IAttrFactory ValueFactory = PBDFactory.GetAttrFactory();
 		SoldierAttr PreAttr = ValueFactory.GetEliteSoldierAttr(ENUM_AttrDecorator.Prefix, 11, theSoldier.GetSoldierValue() );
 		theSoldier.SetCharacterAttr( PreAttr );
 
-		// 加上後輟能力
+		// 加上后輟能力
 		SoldierAttr SufValue = ValueFactory.GetEliteSoldierAttr(ENUM_AttrDecorator.Suffix, 21, theSoldier.GetSoldierValue() );
 		theSoldier.SetCharacterAttr( SufValue );
 				
@@ -65,11 +65,11 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 		// 建立俘兵
 		ISoldier theCaptive =new SoldierCaptive( theEnemy );
 
-		// 加上前輟能力
+		// 加上前缀能力
 		PreAttr = ValueFactory.GetEliteSoldierAttr(ENUM_AttrDecorator.Prefix, 11, theCaptive.GetSoldierValue() );
 		theCaptive.SetCharacterAttr( PreAttr );
 
-		// 加上後輟能力
+		// 加上后輟能力
 		SufValue = ValueFactory.GetEliteSoldierAttr(ENUM_AttrDecorator.Suffix, 21, theCaptive.GetSoldierValue() );
 		theCaptive.SetCharacterAttr( SufValue );
 				
@@ -81,15 +81,15 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 
 	}
 
-	// 兵營
+	// 兵营
 	SoldierCamp theSoldierCamp= null;
 	CaptiveCamp theCaptiveCamp= null;
 	void UnitTest_Camp()
 	{
-		theSoldierCamp = new SoldierCamp(null, ENUM_Soldier.Rookie, "測試", "", 2, Vector3.zero); 
-		theCaptiveCamp = new CaptiveCamp(null, ENUM_Enemy.Elf, "測試", "", 3, Vector3.zero); 
+		theSoldierCamp = new SoldierCamp(null, ENUM_Soldier.Rookie, "测试", "", 2, Vector3.zero); 
+		theCaptiveCamp = new CaptiveCamp(null, ENUM_Enemy.Elf, "测试", "", 3, Vector3.zero); 
 
-		//  執行訓練
+		//  执行训练
 		theSoldierCamp.Train();
 		theSoldierCamp.Train();
 		theSoldierCamp.Train();
@@ -99,7 +99,7 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 		theCaptiveCamp.Train();
 	}
 
-	// 執行兵營命令
+	// 执行兵营命令
 	void Update_Camp()
 	{
 		if( theSoldierCamp != null)
@@ -108,14 +108,14 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 			theCaptiveCamp.RunCommand();
 	}
 
-	// 兵營系統
+	// 兵营系统
 	CampSystem theCampSystem=null;
 	void UnitTest_CampSystem()
 	{
 		theCampSystem =new CampSystem(null);
 		theCampSystem.Initialize();
 
-		//  執行訓練
+		//  执行训练
 		theCampSystem.UTTrainSoldier( ENUM_Soldier.Rookie ); 
 		theCampSystem.UTTrainSoldier( ENUM_Soldier.Rookie ); 
 		theCampSystem.UTTrainSoldier( ENUM_Soldier.Rookie ); 
@@ -125,19 +125,19 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 		theCampSystem.UTTrainSoldier( ENUM_Soldier.Captain ); 
 	}
 
-	// 執行兵營系統命令
+	// 执行兵营系统命令
 	void Update_CampSystem()
 	{
 		if( theCampSystem != null)
 			theCampSystem.Update();
 	}
 
-	// 遊戲事件
+	// 游戏事件
 	void UnitTest_GameEvent()
 	{
 		GameEventSystem EventSys = new GameEventSystem( null );
 
-		// 註冊
+		// 注册
 		EventSys.RegisterObserver( ENUM_GameEvent.EnemyKilled, new EnemyKilledObserverUI(null));
 		EventSys.RegisterObserver( ENUM_GameEvent.EnemyKilled, new EnemyKilledObserverAchievement(null));
 
@@ -145,7 +145,7 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 		EventSys.NotifySubject ( ENUM_GameEvent.EnemyKilled, null );
 	}
 
-	// 關卡系統
+	// 关卡系统
 	StageSystem theStageSystem = null;
 	void UnitTest_StageSystem()
 	{
@@ -153,7 +153,7 @@ public class PBaseDefenseGameUnitTest : MonoBehaviour {
 		theStageSystem.Initialize();
 	}
 
-	// 執行關卡
+	// 执行关卡
 	void Update_StageSystem()
 	{
 		if( theStageSystem != null)

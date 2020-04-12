@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// 訂閱新關卡-增加Solder勳章
+// 订閱新关卡-增加Solder勋章
 public class NewStageObserverSoldierAddMedal : IGameEventObserver 
 {
 	private NewStageSubject m_Subject = null;
@@ -12,7 +12,7 @@ public class NewStageObserverSoldierAddMedal : IGameEventObserver
 		m_PBDGame = PBDGame;
 	}
 	
-	// 設定觀察的主題
+	// 设定观察的主题
 	public override	void SetSubject( IGameEventSubject Subject )
 	{
 		m_Subject = Subject as NewStageSubject;
@@ -21,7 +21,7 @@ public class NewStageObserverSoldierAddMedal : IGameEventObserver
 	// 通知Subject被更新
 	public override void Update()
 	{
-		// 增加勳章
+		// 增加勋章
 		SoldierAddMedalVisitor theAddMedalVisitor = new SoldierAddMedalVisitor(m_PBDGame); 
 		m_PBDGame.RunCharacterVisitor( theAddMedalVisitor );
 	}

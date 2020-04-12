@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-// 遊戲事件
+// 游戏事件
 public enum ENUM_GameEvent
 {
 	Null  			= 0,
-	EnemyKilled 	= 1,// 敵方單位陣亡
-	SoldierKilled	= 2,// 玩家單位陣亡
-	SoldierUpgate	= 3,// 玩家單位升級
-	NewStage		= 4,// 新關卡
+	EnemyKilled 	= 1,// 敌方单位阵亡
+	SoldierKilled	= 2,// 玩家单位阵亡
+	SoldierUpgate	= 3,// 玩家单位升級
+	NewStage		= 4,// 新关卡
 }
 
 
-// 遊戲事件系統
+// 游戏事件系统
 public class GameEventSystem : IGameSystem
 {
 	private Dictionary< ENUM_GameEvent, IGameEventSubject> m_GameEvents = new Dictionary< ENUM_GameEvent, IGameEventSubject>(); 
@@ -22,13 +22,13 @@ public class GameEventSystem : IGameSystem
 		Initialize();
 	}
 		
-	// 釋放
+	// 释放
 	public override void Release()
 	{
 		m_GameEvents.Clear();
 	}
 		
-	// 替某一主題註冊一個觀測者
+	// 替某一主题注册一个观測者
 	public void RegisterObserver(ENUM_GameEvent emGameEvnet, IGameEventObserver Observer)
 	{
 		// 取得事件
@@ -40,14 +40,14 @@ public class GameEventSystem : IGameSystem
 		}
 	}
 
-	// 註冊一個事件
+	// 注册一个事件
 	private IGameEventSubject GetGameEventSubject( ENUM_GameEvent emGameEvnet )
 	{
 		// 是否已經存在
 		if( m_GameEvents.ContainsKey( emGameEvnet ))
 			return m_GameEvents[emGameEvnet];
 
-		// 產生對映的GameEvent
+		// 产生对应的GameEvent
 		IGameEventSubject pSujbect= null;
 		switch( emGameEvnet )
 		{
@@ -64,16 +64,16 @@ public class GameEventSystem : IGameSystem
 			pSujbect = new NewStageSubject();
 			break;
 		default:
-			Debug.LogWarning("還沒有針對["+emGameEvnet+"]指定要產生的Subject類別");
+			Debug.LogWarning("还沒有针对["+emGameEvnet+"]指定要产生的Subject类别");
 			return null;
 		}
 
-		// 加入後並回傳
+		// 加入后并回传
 		m_GameEvents.Add (emGameEvnet, pSujbect );
 		return pSujbect;
 	}
 
-	// 通知一個GameEvent更新
+	// 通知一个GameEvent更新
 	public void NotifySubject( ENUM_GameEvent emGameEvnet, System.Object Param)
 	{
 		// 是否存在
