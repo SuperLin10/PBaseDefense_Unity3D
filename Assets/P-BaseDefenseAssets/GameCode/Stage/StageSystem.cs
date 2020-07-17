@@ -52,7 +52,7 @@ public class StageSystem : IGameSystem
 		// 是否要切換下一個關卡
 		if (m_PBDGame.GetEnemyCount() == 0)
 		{
-			// 是否結束
+			// 是否结束
 			if (m_NowStageHandler.IsFinished() == false)
 				return;
 

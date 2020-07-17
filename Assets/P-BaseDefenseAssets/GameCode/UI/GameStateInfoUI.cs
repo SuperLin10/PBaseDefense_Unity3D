@@ -56,10 +56,10 @@ public class GameStateInfoUI : IUserInterface
 		}
 		ShowHeart( StageSystem.MAX_HEART );
 
-		// 結束Continue
+		// 结束Continue
 		Button btn  = UITool.GetUIComponent<Button>(m_RootUI, "ContinueBtn");
 		btn.onClick.AddListener( ()=> OnContinueBtnClick() );
-		// 結束
+		// 结束
 		m_GameOverObj = UnityTool.FindChildGameObject( m_RootUI,"GameOver");
 		m_GameOverObj.SetActive(false);
 
@@ -125,7 +125,7 @@ public class GameStateInfoUI : IUserInterface
 		m_NowStageLvText.text = string.Format("目前关卡:{0}",Lv);
 	}
 
-	// 显示結束
+	// 显示结束
 	private void ShowGameOver()
 	{
 		m_GameOverObj.SetActive(true);
